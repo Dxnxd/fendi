@@ -68,21 +68,25 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 					</div>
 				</div>
 			</div>
-			<div id="header" class="wrapper _yellow">
-				<?php if ($helper->countModules('menu')) { ?>
-					<div class="col-xs-12 col-md-9">
-						<jdoc:include type="modules" name="menu" />
+			<div id="header" class="wrapper _white">
+				<div class="container">
+					<div class="row">
+						<?php if ($helper->countModules('menu')) { ?>
+							<div class="col-xs-12 col-md-10">
+								<jdoc:include type="modules" name="menu" />
+							</div>
+						<?php } ?>
+						<?php if ($helper->countModules('languages')) { ?>
+							<div class="col-xs-12 col-md-2">
+								<jdoc:include type="modules" name="languages" />
+							</div>
+						<?php } ?>
 					</div>
-				<?php } ?>
-				<?php if ($helper->countModules('languages')) { ?>
-					<div class="col-xs-12 col-md-3">
-						<jdoc:include type="modules" name="languages" />
-					</div>
-				<?php } ?>
+				</div>
 			</div>
 		</header>
 		<section id="mainbody">
-			<?php if ($fp) { ?>
+			<?php if ($fp || $helper->countModules('frontpage')) { ?>
 				<?php if ($helper->countModules('showcase')) { ?>
 				<div id="showcase" class="page wrapper _white">
 					<div class="page-inner">
@@ -133,7 +137,7 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 			<?php } ?>
 		</section>
 		<footer id="footer">
-			<div class="wrapper _gary">
+			<div class="wrapper _gray _border-top">
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12">
