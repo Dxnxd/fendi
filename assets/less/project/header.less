@@ -1,10 +1,10 @@
-#header {
-    position: fixed; width: 100%; height: 80px; border-top: 4px solid @green; z-index: 800;
+#masthead {
+    width: 100%; height: 45px;
     a { outline: 0 none; }
     .logo {
-	margin: 8px 0;
+	margin: 5px 0;
 	a {
-	    display: block; width: 60px; height: 61px; text-indent: -999px; overflow: hidden; background: url('../img/logo.png') no-repeat center center transparent;
+	    display: block; width: 150px; height: 35px; text-indent: -999px; overflow: hidden; background: url('../img/logo.png') no-repeat center center transparent;
 	}
     }
     .search {
@@ -33,12 +33,16 @@
 	    }
 	}
     }
+}
+#header {
+    height: 60px;
     .menu {
+	height: 60px;
 	ul {
-	    margin-top: 23px; padding-right: (@grid-gutter-width / 2);
 	    li {
-		color: @menuColor; line-height: 30px; font-size: 16px; font-style: normal; font-size-adjust: none; border-radius: 2px; transition: all 0.2s;
-		& ~ li { margin-right: (@grid-gutter-width / 2) }
+		color: @menuColor; line-height: 60px; font-size: 16px; font-style: normal; font-size-adjust: none; transition: all 0.2s; border-right: 1px solid @lightGray;
+		&:last-child { border-left: 1px solid @lightGray; }
+		/*& ~ li { margin-right: (@grid-gutter-width / 2) }*/
 		a {
 		    display: block; text-decoration: none; color: @menuColor; padding: 0 6px;
 		    &:hover {
@@ -46,8 +50,8 @@
 		    }
 		}
 		&.active, &:hover {
-		    color: #fff; background: @green;
-		    a { color: #fff; }
+		    color: @text-color; background: @lightGray;
+		    a { color: @text-color; }
 		}
 	    }
 	}
