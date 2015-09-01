@@ -8,7 +8,7 @@
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
-JHtml::_('stylesheet', 'mod_languages/template.css', array(), true);
+//JHtml::_('stylesheet', 'mod_languages/template.css', array(), true);
 ?>
 <div class="mod-languages<?php echo $moduleclass_sfx ?>">
 <?php if ($headerText) : ?>
