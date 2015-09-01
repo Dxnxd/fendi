@@ -50,68 +50,76 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 		JFactory::getDocument()->addScriptDeclaration('var base = "' . JURI::base() . '"');
 		?><jdoc:include type="head" />
 	</head>
-	<body id="bd" class="<?php echo strtolower($helper->device); ?>" data-spy="scroll" data-target="#menu">
-		<header id="header">
-			<div class="wrapper _white">
+	<body id="bd" class="<?php echo strtolower($helper->device); ?>">
+		<header>
+			<div id="masthead" class="wrapper _yellow">
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-3 col-md-1">
+						<div class="col-xs-9">
 							<h1 class="logo">
 								<a href="<?php echo JURI::base(); ?>" title="<?php echo $sitename; ?>"><?php echo $sitename; ?></a>
 							</h1>
 						</div>
-						<?php if ($helper->countModules('menu')) { ?>
-							<div class="col-xs-6 col-md-9">
-								<jdoc:include type="modules" name="menu" />
-							</div>
-						<?php } ?>
 						<?php if ($helper->countModules('search')) { ?>
-							<div class="col-xs-3 col-md-2">
+							<div class="col-xs-3">
 								<jdoc:include type="modules" name="search" />
 							</div>
 						<?php } ?>
 					</div>
 				</div>
 			</div>
+			<div id="header" class="wrapper _yellow">
+				<?php if ($helper->countModules('menu')) { ?>
+					<div class="col-xs-12 col-md-9">
+						<jdoc:include type="modules" name="menu" />
+					</div>
+				<?php } ?>
+				<?php if ($helper->countModules('languages')) { ?>
+					<div class="col-xs-12 col-md-3">
+						<jdoc:include type="modules" name="languages" />
+					</div>
+				<?php } ?>
+			</div>
 		</header>
-		<section id="main">
+		<section id="mainbody">
 			<?php if ($fp) { ?>
 				<?php if ($helper->countModules('showcase')) { ?>
-				<div id="home" class="page wrapper _white">
+				<div id="showcase" class="page wrapper _white">
 					<div class="page-inner">
 						<jdoc:include type="modules" name="showcase" />
 					</div>
 				</div>
 				<?php } ?>
-				<?php if ($helper->countModules('content')) { ?>
-				<div id="content" class="page wrapper _dark-gray">
-					<jdoc:include type="modules" name="content" />
-				</div>
-				<?php } ?>
-				<?php if ($helper->countModules('categories')) { ?>
-				<div id="categories" class="page wrapper _green">
-					<jdoc:include type="modules" name="categories" />
-				</div>
-				<?php } ?>
-				<?php if ($helper->countModules('recommendations')) { ?>
-				<div id="recommendations" class="page wrapper _dark-gray">
-					<jdoc:include type="modules" name="recommendations" />
-				</div>
-				<?php } ?>
-				<?php if ($helper->countModules('panorama')) { ?>
-				<div id="panorama" class="page wrapper _white">
-					<div class="page-inner">
-						<jdoc:include type="modules" name="panorama" />
+				<?php if ($helper->countModules('main')) { ?>
+				<div id="main" class="page wrapper _black">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<jdoc:include type="modules" name="main" />
+							</div>
+						</div>
 					</div>
 				</div>
 				<?php } ?>
-				<?php if ($helper->countModules('interaction')) { ?>
-				<div id="interaction" class="page wrapper _gray _bg-contacts">
-					<jdoc:include type="modules" name="interaction" />
+				<?php if ($helper->countModules('bot-1') || $helper->countModules('bot-2') || $helper->countModules('bot-3')) { ?>
+				<div id="bot" class="page wrapper _gray">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-md-4">
+								<jdoc:include type="modules" name="bot-1" />
+							</div>
+							<div class="col-xs-12 col-md-4">
+								<jdoc:include type="modules" name="bot-2" />
+							</div>
+							<div class="col-xs-12 col-md-4">
+								<jdoc:include type="modules" name="bot-3" />
+							</div>
+						</div>
+					</div>
 				</div>
 				<?php } ?>
 			<?php } else { // not frontpage ?>
-				<div id="home" class="page component wrapper _white">
+				<div id="main" class="page component wrapper _white">
 					<div class="page-inner">
 						<div class="container">
 							<div class="row">
@@ -125,15 +133,37 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 			<?php } ?>
 		</section>
 		<footer id="footer">
-			<div class="wrapper _green">
+			<div class="wrapper _gary">
 				<div class="container">
-					<?php if ($helper->countModules('copyright')) { ?>
-					<div id="copyright" class="row">
-						<div class="col-xs-12 text-center">
-							<jdoc:include type="modules" name="copyright" />
+					<div class="row">
+						<div class="col-xs-12">
+							Social & etc.
 						</div>
 					</div>
-					<?php } ?>
+				</div>
+			</div>
+			<div class="wrapper _yellow">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-md-9">
+							<?php if ($helper->countModules('footer')) { ?>
+							<div id="copyright" class="row">
+								<div class="col-xs-12 text-center">
+									<jdoc:include type="modules" name="footer" />
+								</div>
+							</div>
+							<?php } ?>
+						</div>
+						<div class="col-xs-12 col-md-3">
+							<?php if ($helper->countModules('copyright')) { ?>
+							<div id="copyright" class="row">
+								<div class="col-xs-12 text-center">
+									<jdoc:include type="modules" name="copyright" />
+								</div>
+							</div>
+							<?php } ?>
+						</div>
+					</div>
 				</div>
 			</div>
 		</footer>
