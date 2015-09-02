@@ -84,6 +84,7 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 					</div>
 				</div>
 			</div>
+			<div class="clearfix"></div>
 		</header>
 		<section id="mainbody">
 			<?php if ($fp || $helper->countModules('frontpage')) { ?>

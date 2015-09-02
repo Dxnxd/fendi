@@ -19,70 +19,70 @@ $(function () {
 	}
     });
 
-    if ($(".slideshow").length) {
-	var $slideshowHome = $(".slideshow").not(".panorama");
-	$slideshowHome.imagesLoaded(function () {
-	    $slideshowHome.find("ul.items").caroufredsel({
-		items: 1
-		, auto: false
-		, responsive: true
-		, pagination: $slideshowHome.find(".pages")
-		, next: $slideshowHome.find(".controls .next")
-		, prev: $slideshowHome.find(".controls .prev")
-		, scroll: {
-		    items: 1
-		    , fx: 'crossfade'
-		}
-	    });
-	});
-	
-	if ($(".slideshow.panorama").length) {
-	    var $panorama = $(".slideshow.panorama");
-	    var $items = $panorama.find("ul.items");
-	    $items.owlCarousel({
-		rtl:true
-		, loop:true
-		, navContainer: false
-		, items: 4
-		, slideBy: 4
-		, responsive:{
-		    0:{ items: 1 }
-		    , 600:{ items: 3 }
-		    , 1000:{ items: 4 }
-		}
-	    });
-	    $panorama.find(".next").click(function() {
-		$items.trigger('next.owl.carousel');
-	    });
-	    $panorama.find(".prev").click(function() {
-		$items.trigger('prev.owl.carousel');
-	    });
-	    $items.on('click', "li, a", function(e) {
-		var swf = $(this).find("img").attr('src').replace('.jpg', '.swf');
-		var $container = $(".slideshow.panorama .preview");
-		$container.find(".player").empty();
-		$container.fadeIn('fast', function() {
-		    $container.find(".close").show(1);
-		    $container.find(".inner").animate({'margin-top': -200}, function() {
-			Body.preventScroll();
-		    });
-		    $container.find(".inner").slideDown(function() {
-			$container.find(".player").html('<object width="600" height="400" data="' + swf + '"></object>');
-		    });
-		});
-		e.preventDefault();
-		
-		$container.on('click', ".close", function(e) {
-		    $container.find(".inner").slideUp(function() {
-			$container.fadeOut('fast', function() {
-			    $container.find(".close").hide(1);
-			    Body.allowScroll();
-			});
-		    });
-		});
-	    });
-	}
-    }
+//    if ($(".slideshow").length) {
+//	var $slideshowHome = $(".slideshow").not(".panorama");
+//	$slideshowHome.imagesLoaded(function () {
+//	    $slideshowHome.find("ul.items").caroufredsel({
+//		items: 1
+//		, auto: false
+//		, responsive: true
+//		, pagination: $slideshowHome.find(".pages")
+//		, next: $slideshowHome.find(".controls .next")
+//		, prev: $slideshowHome.find(".controls .prev")
+//		, scroll: {
+//		    items: 1
+//		    , fx: 'crossfade'
+//		}
+//	    });
+//	});
+//	
+//	if ($(".slideshow.panorama").length) {
+//	    var $panorama = $(".slideshow.panorama");
+//	    var $items = $panorama.find("ul.items");
+//	    $items.owlCarousel({
+//		rtl:true
+//		, loop:true
+//		, navContainer: false
+//		, items: 4
+//		, slideBy: 4
+//		, responsive:{
+//		    0:{ items: 1 }
+//		    , 600:{ items: 3 }
+//		    , 1000:{ items: 4 }
+//		}
+//	    });
+//	    $panorama.find(".next").click(function() {
+//		$items.trigger('next.owl.carousel');
+//	    });
+//	    $panorama.find(".prev").click(function() {
+//		$items.trigger('prev.owl.carousel');
+//	    });
+//	    $items.on('click', "li, a", function(e) {
+//		var swf = $(this).find("img").attr('src').replace('.jpg', '.swf');
+//		var $container = $(".slideshow.panorama .preview");
+//		$container.find(".player").empty();
+//		$container.fadeIn('fast', function() {
+//		    $container.find(".close").show(1);
+//		    $container.find(".inner").animate({'margin-top': -200}, function() {
+//			Body.preventScroll();
+//		    });
+//		    $container.find(".inner").slideDown(function() {
+//			$container.find(".player").html('<object width="600" height="400" data="' + swf + '"></object>');
+//		    });
+//		});
+//		e.preventDefault();
+//		
+//		$container.on('click', ".close", function(e) {
+//		    $container.find(".inner").slideUp(function() {
+//			$container.fadeOut('fast', function() {
+//			    $container.find(".close").hide(1);
+//			    Body.allowScroll();
+//			});
+//		    });
+//		});
+//	    });
+//	}
+//    }
 
     $(".panel.content").on('click', "a.menu", function (e) {
 	var $parent = $(this).parents(".panel.content:first .panel-body");
