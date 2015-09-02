@@ -9,10 +9,11 @@
     }
 }
 .mod-languages {
+    border-right: 1px solid #ccc; border-left: 1px solid #ccc; height: 60px;
     ul {
-	max-height: 60px;
+	max-height: 60px; margin-bottom: 0; padding: 7px 20px 0;
 	li {
-	    font-size: 12px; line-height: 18px; display: block; margin: 7px 0;
+	    font-size: 12px; line-height: 18px; display: block; margin-bottom: 7px; box-shadow: none;
 	    a {
 		color: #fff; display: block; background: darken(@lightGray, 15%); border-radius: 4px; padding: 1px 5px; text-align: center; transition: 0.2s all; line-height: 18px; height: 20px; overflow: hidden;
 		&:hover { background: @blue; text-decoration: none; }

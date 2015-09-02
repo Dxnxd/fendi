@@ -6,7 +6,7 @@ defined('_JEXEC') or die;
 <div class="search">
 	<form class="" role="form">
 		<div class="form-group">
-			<input type="text" name="q" placeholder="" class="form-control" />
+			<input type="text" name="q" placeholder="<?php echo JText::_('K2_SEARCH'); ?>" class="form-control" />
 			<button type="submit" class="btn btn-success"><i class="icon-search"></i></button>
 			<input type="hidden" name="categories" value="<?php echo $categoryFilter; ?>" />
 			<?php if (!$app->getCfg('sef')) { ?>
