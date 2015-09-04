@@ -95,17 +95,28 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 					</div>
 				</div>
 				<?php } ?>
-				<?php if ($helper->countModules('main')) { ?>
 				<div id="main" class="page wrapper _black">
 					<div class="container">
 						<div class="row">
+							<?php if ($helper->countModules('main')) { ?>
 							<div class="col-xs-12">
 								<jdoc:include type="modules" name="main" />
 							</div>
+							<?php } ?>
+							<?php if ($helper->countModules('main-1') || $helper->countModules('main-2') || $helper->countModules('main-3')) { ?>
+							<div class="col-xs-12 col-md-4">
+								<jdoc:include type="modules" name="main-1" />
+							</div>
+							<div class="col-xs-12 col-md-4">
+								<jdoc:include type="modules" name="main-2" />
+							</div>
+							<div class="col-xs-12 col-md-4">
+								<jdoc:include type="modules" name="main-3" />
+							</div>
+							<?php  } ?>
 						</div>
 					</div>
 				</div>
-				<?php } ?>
 				<?php if ($helper->countModules('bot-1') || $helper->countModules('bot-2') || $helper->countModules('bot-3')) { ?>
 				<div id="bot" class="page wrapper _gray">
 					<div class="container">
