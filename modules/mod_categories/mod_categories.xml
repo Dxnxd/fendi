@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+    <name>Categories</name>
+    <author>Farid Roshan</author>
+    <creationDate>September 2015</creationDate>
+    <copyright>Copyleft</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <authorEmail>faridv@gmail.com</authorEmail>
+    <authorUrl>www.faridv.ir</authorUrl>
+    <version>1.0</version>
+    <description>Categories Module</description>
+    <files>
+	<filename module="mod_categories">mod_categories.php</filename>
+	<folder>tmpl</folder>
+    </files>
+    <config>
+	<fields name="params">
+	    <fieldset name="basic">
+		<field
+		    name="title"
+		    type="text"
+		    size="50"
+		    required="true"
+		    label="Category Title"
+		    description="Category Title" />
+		<field
+		    name="img"
+		    type="text"
+		    size="50"
+		    required="true"
+		    label="Category Image"
+		    description="Category Image" />
+		<field
+		    name="url"
+		    type="url"
+		    size="50"
+		    required="true"
+		    default=""
+		    label="Category URL"
+		    description="Category URL" />
+	    </fieldset>
+	</fields>
+    </config>
+</extension>
