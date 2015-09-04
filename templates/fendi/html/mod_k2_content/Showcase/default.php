@@ -24,19 +24,21 @@ defined('_JEXEC') or die;
 				</li>
 			<?php } // forach [items] ?>
 		</ul>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 hidden-xs hidden-sm">
-					<div class="item-titles">
-						<ul class="list-unstyled">
-							<?php foreach ($items as $key => $item) { ?>
-							<li>
-								<a href="#">
-									<?php if ($params->get('itemTitle')) { ?><span><?php echo $item->title; ?></span><?php } ?>
-								</a>
-							</li>
-							<?php } // forach [items] ?>
-						</ul>
+		<div class="wrapper _yellow ltr">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 hidden-xs hidden-sm">
+						<div class="item-titles">
+							<ul class="list-unstyled">
+								<?php foreach ($items as $key => $item) { ?>
+									<li<?php if ($key == 0) echo ' class="active"'; ?>>
+										<a href="#">
+											<?php if ($params->get('itemTitle')) { ?><span><?php echo $item->title; ?></span><?php } ?>
+										</a>
+									</li>
+								<?php } // forach [items] ?>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
