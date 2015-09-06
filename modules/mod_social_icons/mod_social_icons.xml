@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+    <name>Social Icons</name>
+    <author>Farid Roshan</author>
+    <creationDate>July 2006</creationDate>
+    <copyright>Copyright (C) 2015. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <authorEmail>faridv@gmail.com</authorEmail>
+    <authorUrl>www.joomla.org</authorUrl>
+    <version>3.0.0</version>
+    <description>Social Icons module</description>
+    <files>
+	<filename module="mod_social_icons">mod_social_icons.php</filename>
+	<folder>tmpl</folder>
+	<filename>mod_social_icons.xml</filename>
+    </files>
+    <config>
+	<fields name="params">
+	    <fieldset name="basic">
+		<field name="facebook" type="list" default="1" label="Show facebook icon">
+		    <option value="1">Yes</option>
+		    <option value="0">No</option>
+		</field>
+		<field name="facebook_link" type="text" default="http://facebook.com" label="Facebook link" />
+		
+		<field name="twitter" type="list" default="1" label="Show twitter icon">
+		    <option value="1">Yes</option>
+		    <option value="0">No</option>
+		</field>
+		<field name="twitter_link" type="text" default="http://twitter.com" label="twitter link" />
+		
+		<field name="gplus" type="list" default="1" label="Show gplus icon">
+		    <option value="1">Yes</option>
+		    <option value="0">No</option>
+		</field>
+		<field name="gplus_link" type="text" default="http://plus.google.com" label="Facebook link" />
+		
+		<field name="linkedin" type="list" default="1" label="Show linkedin icon">
+		    <option value="1">Yes</option>
+		    <option value="0">No</option>
+		</field>
+		<field name="linkedin_link" type="text" default="http://linkedin.com" label="linkedin link" />
+		
+		<field name="flicker" type="list" default="1" label="Show flicker icon">
+		    <option value="1">Yes</option>
+		    <option value="0">No</option>
+		</field>
+		<field name="flicker_link" type="text" default="http://flicker.com" label="flicker link" />
+	    </fieldset>
+	</fields>
+    </config>
+</extension>
