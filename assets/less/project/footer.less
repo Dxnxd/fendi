@@ -1,4 +1,17 @@
 #footer {
     color: @text-color; font-size: 12px;
 }
-#copyright { padding: (@grid-gutter-width / 3 * 2) 0; }
+#copyright { padding: (@grid-gutter-width / 3 * 2) 0; .ltr { text-align: right !important; } }
+#footer-menu {
+    padding: (@grid-gutter-width / 3 * 2) 0; text-align: left;
+    ul {
+	li {
+	    & ~ li {
+		&:before { content: ' / '; }
+	    }
+	    a {
+		color: @text-color; padding-right: 5px;
+	    }
+	}
+    }
+}
