@@ -149,36 +149,38 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 			<?php } ?>
 		</section>
 		<footer id="footer">
+			<?php if ($helper->countModules('social')) { ?>
 			<div class="wrapper _gray _border-top">
 				<div class="container">
-					<div class="row">
-						<div class="col-xs-12">
-							Social & etc.
+					<div class="social-icons" class="row">
+						<div class="col-xs-12 ltr">
+							<jdoc:include type="modules" name="social" />
 						</div>
 					</div>
 				</div>
 			</div>
+			<?php } ?>
 			<div class="wrapper _yellow">
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-12 col-md-9">
-							<?php if ($helper->countModules('footer')) { ?>
-							<div id="copyright" class="row">
-								<div class="col-xs-12 text-center">
-									<jdoc:include type="modules" name="footer" />
-								</div>
-							</div>
-							<?php } ?>
-						</div>
+						<?php if ($helper->countModules('copyright')) { ?>
 						<div class="col-xs-12 col-md-3">
-							<?php if ($helper->countModules('copyright')) { ?>
 							<div id="copyright" class="row">
 								<div class="col-xs-12 text-center">
 									<jdoc:include type="modules" name="copyright" />
 								</div>
 							</div>
-							<?php } ?>
 						</div>
+						<?php } ?>
+						<?php if ($helper->countModules('footer')) { ?>
+						<div class="col-xs-12 col-md-9">
+							<div id="footer-menu" class="row">
+								<div class="col-xs-12">
+									<jdoc:include type="modules" name="footer" />
+								</div>
+							</div>
+						</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
