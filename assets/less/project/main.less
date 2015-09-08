@@ -22,3 +22,9 @@ body {
 	& > .page-inner { height: 100%; }
     }
 }
+
+#component {
+    position: relative; padding-top: (@grid-gutter-width * 2); margin-top: (@grid-gutter-width); color: #fff; padding-bottom: (@grid-gutter-width * 2);
+    &:before { display: block; content: ''; position: absolute; top: 0; left: 10%; width: 80%; height: 1px; background: @yellow; }
+    
+}
