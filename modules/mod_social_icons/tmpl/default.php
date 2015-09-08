@@ -30,9 +30,9 @@ defined('_JEXEC') or die;
 		<a href="<?php echo $params->get('linkedin_link', '#'); ?>"><i class="icon-linkedin"></i></a>
 	</li>
 	<?php } ?>
-	<?php if ($params->get('flicker', 0)) { ?>
+	<?php if ($params->get('flickr', 0)) { ?>
 	<li>
-		<a href="<?php echo $params->get('flicker_link', '#'); ?>"><i class="icon-flicker"></i></a>
+		<a href="<?php echo $params->get('flickr_link', '#'); ?>"><i class="icon-flickr"></i></a>
 	</li>
 	<?php } ?>
 </ul>

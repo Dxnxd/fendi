@@ -41,11 +41,11 @@
 		</field>
 		<field name="linkedin_link" type="text" default="http://linkedin.com" label="linkedin link" />
 		
-		<field name="flicker" type="list" default="1" label="Show flicker icon">
+		<field name="flickr" type="list" default="1" label="Show flickr icon">
 		    <option value="1">Yes</option>
 		    <option value="0">No</option>
 		</field>
-		<field name="flicker_link" type="text" default="http://flicker.com" label="flicker link" />
+		<field name="flickr_link" type="text" default="http://flickr.com" label="flicker link" />
 	    </fieldset>
 	</fields>
     </config>
