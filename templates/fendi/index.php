@@ -31,7 +31,7 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 	$schedule = (stristr(JURI::getInstance()->toString(), 'schedule')) ? true : false; // Check if we are on schedules page
 	$programsTable = (stristr(JURI::getInstance()->toString(), 'programs-table')) ? true : false; // Check if we are on programs-table page
 	$sitename = $app->getCfg('sitename');
-	// $dir_suffix = ($this->direction == 'rtl') ? '_rtl' : '';
+	$dir_suffix = ($this->direction == 'rtl') ? ' rtl' : ' ltr';
 	?>
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -50,7 +50,7 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 		JFactory::getDocument()->addScriptDeclaration('var base = "' . JURI::base() . '"');
 		?><jdoc:include type="head" />
 	</head>
-	<body id="bd" class="<?php echo strtolower($helper->device); ?>">
+	<body id="bd" class="<?php echo strtolower($helper->device) . $dir_suffix; ?>">
 		<header>
 			<div id="masthead" class="wrapper _yellow">
 				<div class="container">
