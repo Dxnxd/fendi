@@ -8,18 +8,20 @@
  */
 // no direct access
 defined('_JEXEC') or die('Restricted access');
+$title = JFactory::getApplication()->getMenu()->getActive()->title;
 ?>
 <div class="category itemlist">
 	<header class="title">
-		<h2><?php echo $this->category->name; ?></h2>
+		<!--<h2><?php echo $this->escape($this->params->get('page_title')); ?></h2>-->
+		<h2><?php echo $this->escape($title); ?></h2>
 		<?php if ($this->params->get('catDescription')) { ?>
 			<p><?php echo $this->category->description; ?></p>
 		<?php } ?>
 	</header>
 	<?php if ((isset($this->leading) || isset($this->primary) || isset($this->secondary) || isset($this->links)) && (count($this->leading) || count($this->primary) || count($this->secondary) || count($this->links))) { ?>
-		<div class="itemlist">
+		<div class="itemlist row">
 			<?php foreach ($this->leading as $key => $item) { ?>
-				<div class="item">
+				<div class="item col-xs-12 col-sm-6 col-md-4">
 					<?php
 					// Load category_item.php by default
 					$this->item = $item;
