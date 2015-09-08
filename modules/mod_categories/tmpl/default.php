@@ -7,11 +7,13 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die;
+$tag = JFactory::getLanguage()->getTag();
+$code = explode('-', $tag);
 ?>
 <div class="panel category-link">
 	<div class="panel-body">
-		<a href="<?php echo $url; ?>">
-			<span class="img"><img src="<?php echo JURI::base(); ?>assets/data/<?php echo $img; ?>" alt="<?php echo $title; ?>" /></span>
+		<a href="<?php echo JURI::base() . $code[0] . '/' . $url; ?>">
+			<span class="img"><img src="<?php echo JURI::base(); ?>/assets/data/<?php echo $img; ?>" alt="<?php echo $title; ?>" /></span>
 			<span class="title"><?php echo $title; ?></span>
 		</a>
 	</div>
