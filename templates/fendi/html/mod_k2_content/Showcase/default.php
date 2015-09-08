@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 	<?php if (count($items)) { ?>
 		<ul class="items list-unstyled">
 			<?php foreach ($items as $key => $item) { ?>
-				<li data-created="<?php echo JHTML::_('date', $item->created, JText::_('K2_DATE_FORMAT_LC2')); ?>">
+				<li data-created="<?php echo JHTML::_('date', $item->created, JText::_('K2_DATE_FORMAT_LC2')); ?>" data-id="<?php echo $item->id; ?>">
 					<?php echo $item->event->BeforeDisplay; ?>
 					<?php echo $item->event->K2BeforeDisplay; ?>
 					<?php if ($params->get('itemImage') && isset($item->image)) { ?>
@@ -31,7 +31,7 @@ defined('_JEXEC') or die;
 						<div class="item-titles">
 							<ul class="list-unstyled">
 								<?php foreach ($items as $key => $item) { ?>
-									<li<?php if ($key == 0) echo ' class="active"'; ?>>
+									<li<?php if ($key == 0) echo ' class="active"'; ?> data-index="<?php echo $key; ?>" data-id="<?php echo $item->id; ?>">
 										<a href="#">
 											<?php if ($params->get('itemTitle')) { ?><span><?php echo $item->title; ?></span><?php } ?>
 										</a>
