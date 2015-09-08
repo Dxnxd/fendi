@@ -7,7 +7,19 @@ $(function () {
 	    , responsive: true
 	    , scroll: {
 		duration: 1000, fx: 'crossfade', timeoutDuration: 10000
+		, onBefore: function (d) {
+		    var id = d.items.visible.attr("data-id");
+		    $(".slideshow .item-titles ul li").removeClass('active');
+		    $(".slideshow .item-titles ul").find("li[data-id=" + id + "]").addClass('active');
+		}
 	    }
+	});
+	$(".slideshow .item-titles ul").on('click', 'li', function (e) {
+	    var index = $(this).attr('data-index');
+	    $items.trigger('slideTo', index);
+	    e.preventDefault();
+	}).on('click', "a", function(e) {
+	    e.preventDefault();
 	});
     }
 
