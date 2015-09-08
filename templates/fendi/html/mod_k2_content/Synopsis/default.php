@@ -19,7 +19,7 @@ defined('_JEXEC') or die;
 					</a>
 				</h3>
 				<p><?php echo $item->introtext; ?></p>
-				<?php if ($params->get('itemReadMore', 0)) { ?><a href=""><?php echo JText::_('K2_READ_MORE'); ?></a><?php } ?>
+				<?php if ($params->get('itemReadMore', 0)) { ?><a href="<?php echo $item->link; ?>"><?php echo JText::_('K2_READ_MORE'); ?></a><?php } ?>
 			</div>
 		<?php } ?>
 	</div>
