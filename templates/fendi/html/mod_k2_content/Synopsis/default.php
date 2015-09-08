@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 <div class="panel synopsis">
 	<div class="panel-body">
 		<?php foreach ($items as $key => $item) { ?>
-			<div class="desc">
+		<div class="desc">
 				<h3 class="title">
 					<a href="<?php echo $item->link; ?>">
 						<?php echo $item->title; ?>
