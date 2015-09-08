@@ -89,21 +89,22 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 		<section id="mainbody">
 			<?php if ($fp || $helper->countModules('frontpage')) { ?>
 				<?php if ($helper->countModules('showcase')) { ?>
-				<div id="showcase" class="page wrapper _white">
-					<div class="page-inner">
-						<jdoc:include type="modules" name="showcase" />
+					<div id="showcase" class="page wrapper _white">
+						<div class="page-inner">
+							<jdoc:include type="modules" name="showcase" />
+						</div>
 					</div>
-				</div>
 				<?php } ?>
-				<div id="main" class="page wrapper _black">
-					<div class="container">
-						<div class="row">
-							<?php if ($helper->countModules('main')) { ?>
+			<?php } ?>
+			<div id="main" class="page wrapper _black">
+				<div class="container">
+					<div class="row">
+						<?php if ($helper->countModules('main')) { ?>
 							<div class="col-xs-12">
 								<jdoc:include type="modules" name="main" />
 							</div>
-							<?php } ?>
-							<?php if ($helper->countModules('main-1') || $helper->countModules('main-2') || $helper->countModules('main-3')) { ?>
+						<?php } ?>
+						<?php if ($helper->countModules('main-1') || $helper->countModules('main-2') || $helper->countModules('main-3')) { ?>
 							<div class="col-xs-12 col-md-4">
 								<jdoc:include type="modules" name="main-1" />
 							</div>
@@ -113,11 +114,16 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 							<div class="col-xs-12 col-md-4">
 								<jdoc:include type="modules" name="main-3" />
 							</div>
-							<?php  } ?>
-						</div>
+						<?php } ?>
+						<?php if (!$helper->countModules('frontpage')) { ?>
+							<div id="component" class="col-xs-12">
+								<jdoc:include type="component" />
+							</div>
+						<?php } ?>
 					</div>
 				</div>
-				<?php if ($helper->countModules('bot-1') || $helper->countModules('bot-2') || $helper->countModules('bot-3')) { ?>
+			</div>
+			<?php if ($helper->countModules('bot-1') || $helper->countModules('bot-2') || $helper->countModules('bot-3')) { ?>
 				<div id="bot" class="page wrapper _gray">
 					<div class="container">
 						<div class="row">
@@ -129,19 +135,6 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 							</div>
 							<div class="col-xs-12 col-md-4">
 								<jdoc:include type="modules" name="bot-3" />
-							</div>
-						</div>
-					</div>
-				</div>
-				<?php } ?>
-			<?php } else { // not frontpage ?>
-				<div id="main" class="page component wrapper _white">
-					<div class="page-inner">
-						<div class="container">
-							<div class="row">
-								<div class="col-xs-12">
-									<jdoc:include type="component" />
-								</div>
 							</div>
 						</div>
 					</div>
