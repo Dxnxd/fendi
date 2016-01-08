@@ -271,7 +271,7 @@ class JMail extends PHPMailer
 	 *
 	 * @since   11.1
 	 */
-	public function addCc($cc, $name = '')
+	public function addCC($cc, $name = '')
 	{
 		// If the carbon copy recipient is an array, add each recipient... otherwise just add the one
 		if (isset($cc))
@@ -292,7 +292,7 @@ class JMail extends PHPMailer
 	 *
 	 * @since   11.1
 	 */
-	public function addBcc($bcc, $name = '')
+	public function addBCC($bcc, $name = '')
 	{
 		// If the blind carbon copy recipient is an array, add each recipient... otherwise just add the one
 		if (isset($bcc))
@@ -457,7 +457,7 @@ class JMail extends PHPMailer
 	 *
 	 * @since   11.1
 	 */
-	public function useSmtp($auth = null, $host = null, $user = null, $pass = null, $secure = null, $port = 25)
+	public function useSMTP($auth = null, $host = null, $user = null, $pass = null, $secure = null, $port = 25)
 	{
 		$this->SMTPAuth = $auth;
 		$this->Host = $host;
@@ -513,12 +513,12 @@ class JMail extends PHPMailer
 		// Are we sending the email as HTML?
 		if ($mode)
 		{
-			$this->isHtml(true);
+			$this->isHTML(true);
 		}
 
 		$this->addRecipient($recipient);
-		$this->addCc($cc);
-		$this->addBcc($bcc);
+		$this->addCC($cc);
+		$this->addBCC($bcc);
 		$this->addAttachment($attachment);
 
 		// Take care of reply email addresses

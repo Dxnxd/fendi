@@ -311,7 +311,7 @@ class JDatabaseDriverSqlite extends JDatabaseDriverPdo
 	 *
 	 * @since   12.1
 	 */
-	public function setUtf()
+	public function setUTF()
 	{
 		$this->connect();
 

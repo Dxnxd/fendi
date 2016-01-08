@@ -439,9 +439,9 @@ class JFilterInput
 				if (!empty($options['forbidden_extensions']))
 				{
 					$explodedName = explode('.', $intendedName);
-					$explodedName =	array_reverse($explodedName);
+					array_reverse($explodedName);
 					array_pop($explodedName);
-					$explodedName = array_map('strtolower', $explodedName);
+					array_map('strtolower', $explodedName);
 
 					/*
 					 * DO NOT USE array_intersect HERE! array_intersect expects the two arrays to
@@ -468,9 +468,10 @@ class JFilterInput
 
 						while (!feof($fp))
 						{
-							$data .= @fread($fp, 131072);
+							$buffer = @fread($fp, 131072);
+							$data .= $buffer;
 
-							if ($options['php_tag_in_content'] && stristr($data, '<?php'))
+							if ($options['php_tag_in_content'] && strstr($buffer, '<?php'))
 							{
 								return false;
 							}
@@ -505,7 +506,7 @@ class JFilterInput
 								if ($collide)
 								{
 									// These are suspicious text files which may have the short tag (<?) in them
-									if (strstr($data, '<?'))
+									if (strstr($buffer, '<?'))
 									{
 										return false;
 									}
@@ -547,7 +548,7 @@ class JFilterInput
 									 */
 									foreach ($options['forbidden_extensions'] as $ext)
 									{
-										if (strstr($data, '.' . $ext))
+										if (strstr($buffer, '.' . $ext))
 										{
 											return false;
 										}
@@ -559,7 +560,7 @@ class JFilterInput
 							 * This makes sure that we don't accidentally skip a <?php tag if it's across
 							 * a read boundary, even on multibyte strings
 							 */
-							$data = substr($data, -10);
+							$data = substr($data, -8);
 						}
 
 						fclose($fp);

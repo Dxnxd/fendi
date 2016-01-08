@@ -20,19 +20,15 @@ JHtml::_('behavior.formvalidator');
 	<?php endif; ?>
 
 	<form id="member-registration" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" method="post" class="form-validate form-horizontal well" enctype="multipart/form-data">
-		<?php // Iterate through the form fieldsets and display each one. ?>
-		<?php foreach ($this->form->getFieldsets() as $fieldset): ?>
+		<?php foreach ($this->form->getFieldsets() as $fieldset): // Iterate through the form fieldsets and display each one.?>
 			<?php $fields = $this->form->getFieldset($fieldset->name);?>
 			<?php if (count($fields)):?>
 				<fieldset>
-				<?php // If the fieldset has a label set, display it as the legend. ?>
-				<?php if (isset($fieldset->label)): ?>
+				<?php if (isset($fieldset->label)):// If the fieldset has a label set, display it as the legend.?>
 					<legend><?php echo JText::_($fieldset->label);?></legend>
 				<?php endif;?>
-				<?php // Iterate through the fields in the set and display them. ?>
-				<?php foreach ($fields as $field) : ?>
-					<?php // If the field is hidden, just display the input. ?>
-					<?php if ($field->hidden): ?>
+				<?php foreach ($fields as $field) :// Iterate through the fields in the set and display them.?>
+					<?php if ($field->hidden):// If the field is hidden, just display the input.?>
 						<?php echo $field->input;?>
 					<?php else:?>
 						<div class="control-group">

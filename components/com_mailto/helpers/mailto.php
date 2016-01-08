@@ -10,11 +10,8 @@
 defined('_JEXEC') or die;
 
 /**
- * Mailto route helper class.
- *
  * @package     Joomla.Site
  * @subpackage  com_mailto
- * @since       1.6.1
  */
 abstract class MailtoHelper
 {
@@ -23,7 +20,7 @@ abstract class MailtoHelper
 	 *
 	 * @param   string  $url  Url
 	 *
-	 * @return  string  URL hash
+	 * @return URL hash
 	 */
 	public static function addLink($url)
 	{

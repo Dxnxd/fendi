@@ -102,7 +102,7 @@ class PlgEditorTinymce extends JPlugin
 
 		$text_direction = 'ltr';
 
-		if ($language->isRtl())
+		if ($language->isRTL())
 		{
 			$text_direction = 'rtl';
 		}

@@ -68,7 +68,7 @@ elseif ($input->get('module'))
 
 		if ($parts)
 		{
-			$class = 'Mod';
+			$class = 'mod';
 
 			foreach ($parts as $part)
 			{
@@ -79,7 +79,7 @@ elseif ($input->get('module'))
 		}
 		else
 		{
-			$class = 'Mod' . ucfirst($module) . 'Helper';
+			$class = 'mod' . ucfirst($module) . 'Helper';
 		}
 
 		$method = $input->get('method') ? $input->get('method') : 'get';

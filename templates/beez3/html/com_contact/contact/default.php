@@ -193,4 +193,6 @@ $cparams = JComponentHelper::getParams('com_media');
 			</div>
 		<?php endif; ?>
 	<?php endif; ?>
-</div>
+	<?php if ($this->params->get('presentation_style') == 'sliders'):?>
+		</div>
+	<?php endif; ?>

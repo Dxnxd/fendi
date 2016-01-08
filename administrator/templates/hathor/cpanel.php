@@ -153,7 +153,7 @@ else
 		<p class="copyright">
 			<?php
 			// Fix wrong display of Joomla!® in RTL language
-			if (JFactory::getLanguage()->isRtl())
+			if (JFactory::getLanguage()->isRTL())
 			{
 				$joomla = '<a href="http://www.joomla.org" target="_blank">Joomla!</a><sup>&#174;&#x200E;</sup>';
 			}

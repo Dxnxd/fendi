@@ -259,7 +259,7 @@ class TemplatesControllerTemplate extends JControllerLegacy
 		if ($data === false)
 		{
 			// Get the validation messages.
-			$errors = $model->getErrors();
+			$errors	= $model->getErrors();
 
 			// Push up to three validation messages out to the user.
 			for ($i = 0, $n = count($errors); $i < $n && $i < 3; $i++)
@@ -376,9 +376,6 @@ class TemplatesControllerTemplate extends JControllerLegacy
 	 */
 	public function delete()
 	{
-		// Check for request forgeries
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
 		$app   = JFactory::getApplication();
 		$model = $this->getModel();
 		$id    = $app->input->get('id');
@@ -415,9 +412,6 @@ class TemplatesControllerTemplate extends JControllerLegacy
 	 */
 	public function createFile()
 	{
-		// Check for request forgeries
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
 		$app      = JFactory::getApplication();
 		$model    = $this->getModel();
 		$id       = $app->input->get('id');
@@ -462,9 +456,6 @@ class TemplatesControllerTemplate extends JControllerLegacy
 	 */
 	public function uploadFile()
 	{
-		// Check for request forgeries
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
 		$app      = JFactory::getApplication();
 		$model    = $this->getModel();
 		$id       = $app->input->get('id');
@@ -496,9 +487,6 @@ class TemplatesControllerTemplate extends JControllerLegacy
 	 */
 	public function createFolder()
 	{
-		// Check for request forgeries
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
 		$app      = JFactory::getApplication();
 		$model    = $this->getModel();
 		$id       = $app->input->get('id');
@@ -535,9 +523,6 @@ class TemplatesControllerTemplate extends JControllerLegacy
 	 */
 	public function deleteFolder()
 	{
-		// Check for request forgeries
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
 		$app      = JFactory::getApplication();
 		$model    = $this->getModel();
 		$id       = $app->input->get('id');
@@ -579,9 +564,6 @@ class TemplatesControllerTemplate extends JControllerLegacy
 	 */
 	public function renameFile()
 	{
-		// Check for request forgeries
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
 		$app     = JFactory::getApplication();
 		$model   = $this->getModel();
 		$id      = $app->input->get('id');
@@ -691,9 +673,6 @@ class TemplatesControllerTemplate extends JControllerLegacy
 	 */
 	public function copyFile()
 	{
-		// Check for request forgeries
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
 		$app      = JFactory::getApplication();
 		$id       = $app->input->get('id');
 		$file     = $app->input->get('file');
@@ -729,9 +708,6 @@ class TemplatesControllerTemplate extends JControllerLegacy
 	 */
 	public function extractArchive()
 	{
-		// Check for request forgeries
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
 		$app   = JFactory::getApplication();
 		$id    = $app->input->get('id');
 		$file  = $app->input->get('file');

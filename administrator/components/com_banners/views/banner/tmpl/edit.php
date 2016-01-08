@@ -22,24 +22,13 @@ JFactory::getDocument()->addScriptDeclaration('
 		}
 	};
 	jQuery(document).ready(function ($){
-		$("#jform_type").on("change", function (a, params) {
-		
-			var v = typeof(params) !== "object" ? $("#jform_type").val() : params.selected;
-			
-			var img_url = $("#image, #url");
-			var custom  = $("#custom");
-			
-			switch (v) {
-				case "0":
-					// Image
-					img_url.show();
-					custom.hide();
-					break;
-				case "1":
-					// Custom
-					img_url.hide();
-					custom.show();
-					break;
+		$("#jform_type").change(function(){
+			if($(this).val() == 1) {
+				$("#image").css("display", "none");
+				$("#custom").css("display", "block");
+			} else {
+				$("#image").css("display", "block");
+				$("#custom").css("display", "none");
 			}
 		}).trigger("change");
 	});

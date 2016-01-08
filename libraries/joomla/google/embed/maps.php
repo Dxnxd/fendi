@@ -74,7 +74,7 @@ class JGoogleEmbedMaps extends JGoogleEmbed
 	 *
 	 * @since   12.3
 	 */
-	public function getMapId()
+	public function getMapID()
 	{
 		return $this->getOption('mapid') ? $this->getOption('mapid') : 'map_canvas';
 	}
@@ -88,7 +88,7 @@ class JGoogleEmbedMaps extends JGoogleEmbed
 	 *
 	 * @since   12.3
 	 */
-	public function setMapId($id)
+	public function setMapID($id)
 	{
 		$this->setOption('mapid', $id);
 
@@ -552,7 +552,7 @@ class JGoogleEmbedMaps extends JGoogleEmbed
 		$zoom = $this->getZoom();
 		$center = $this->getCenter();
 		$maptype = $this->getMapType();
-		$id = $this->getMapId();
+		$id = $this->getMapID();
 		$scheme = $this->isSecure() ? 'https' : 'http';
 		$key = $this->getKey();
 		$sensor = $this->hasSensor() ? 'true' : 'false';
@@ -638,7 +638,7 @@ class JGoogleEmbedMaps extends JGoogleEmbed
 	 */
 	public function getBody()
 	{
-		$id = $this->getMapId();
+		$id = $this->getMapID();
 		$class = $this->getMapClass();
 		$style = $this->getMapStyle();
 

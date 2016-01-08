@@ -10,8 +10,6 @@
 defined('_JEXEC') or die;
 
 /**
- * Mailer Component Controller.
- *
  * @package     Joomla.Site
  * @subpackage  com_mailto
  * @since       1.5

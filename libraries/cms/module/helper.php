@@ -300,13 +300,14 @@ abstract class JModuleHelper
 		{
 			return $tPath;
 		}
-
-		if (file_exists($bPath))
+		elseif (file_exists($bPath))
 		{
 			return $bPath;
 		}
-
-		return $dPath;
+		else
+		{
+			return $dPath;
+		}
 	}
 
 	/**

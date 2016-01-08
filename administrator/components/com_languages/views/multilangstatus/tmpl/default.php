@@ -174,8 +174,7 @@ $notice_switchers = !$this->switchers && ($this->homes > 1 || $this->language_fi
 							<?php echo $status->element; ?>
 						</td>
 				<?php endif; ?>
-				<?php // Published Site languages ?>
-				<?php if ($status->element) : ?>
+				<?php if ($status->element) : // Published Site languages ?>
 						<td class="center">
 							<span class="icon-ok"></span>
 						</td>
@@ -184,8 +183,7 @@ $notice_switchers = !$this->switchers && ($this->homes > 1 || $this->language_fi
 							<?php echo JText::_('JNO'); ?>
 						</td>
 				<?php endif; ?>
-				<?php // Published Content languages ?>
-				<?php if ($status->lang_code && $status->published) : ?>
+				<?php if ($status->lang_code && $status->published) : // Published Content languages ?>
 						<td class="center">
 							<span class="icon-ok"></span>
 						</td>
@@ -194,8 +192,7 @@ $notice_switchers = !$this->switchers && ($this->homes > 1 || $this->language_fi
 							<span class="icon-pending"></span>
 						</td>
 				<?php endif; ?>
-				<?php // Published Home pages ?>
-				<?php if ($status->home_language) : ?>
+				<?php if ($status->home_language) : // Published Home pages ?>
 						<td class="center">
 							<span class="icon-ok"></span>
 						</td>

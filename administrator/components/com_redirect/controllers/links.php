@@ -77,8 +77,6 @@ class RedirectControllerLinks extends JControllerAdmin
 
 	/**
 	 * Executes the batch process to add URLs to the database
-	 *
-	 * @return  void
 	 */
 	public function batch()
 	{

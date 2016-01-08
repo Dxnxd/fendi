@@ -354,7 +354,7 @@ class InstallerModelLanguages extends JModelList
 	protected function _getPackageUrl( $remote_manifest )
 	{
 		$update = new JUpdate;
-		$update->loadFromXml($remote_manifest);
+		$update->loadFromXML($remote_manifest);
 		$package_url = trim($update->get('downloadurl', false)->_data);
 
 		return $package_url;

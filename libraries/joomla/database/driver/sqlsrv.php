@@ -138,7 +138,7 @@ class JDatabaseDriverSqlsrv extends JDatabaseDriver
 		}
 
 		// Set charactersets.
-		$this->utf = $this->setUtf();
+		$this->utf = $this->setUTF();
 	}
 
 	/**
@@ -362,10 +362,6 @@ class JDatabaseDriverSqlsrv extends JDatabaseDriver
 		{
 			foreach ($fields as $field)
 			{
-				if (stristr(strtolower($field->Type), "nvarchar"))
-				{
-					$field->Default = "";
-				}
 				$result[$field->Field] = $field;
 			}
 		}
@@ -811,7 +807,7 @@ class JDatabaseDriverSqlsrv extends JDatabaseDriver
 	 *
 	 * @since   12.1
 	 */
-	public function setUtf()
+	public function setUTF()
 	{
 		return false;
 	}

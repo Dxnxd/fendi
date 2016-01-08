@@ -57,7 +57,7 @@ class PlgContentContact extends JPlugin
 			return true;
 		}
 
-		$row->contactid = $this->getContactId($row->created_by);
+		$row->contactid = $this->getContactID($row->created_by);
 
 		if ($row->contactid)
 		{
@@ -82,7 +82,7 @@ class PlgContentContact extends JPlugin
 	 *
 	 * @return  mixed|null|integer
 	 */
-	protected function getContactId($created_by)
+	protected function getContactID($created_by)
 	{
 		static $contacts = array();
 

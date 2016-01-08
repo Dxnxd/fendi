@@ -116,9 +116,8 @@ CodeMirror.defineMode("gfm", function(config, modeConfig) {
     markdownConfig[attr] = modeConfig[attr];
   }
   markdownConfig.name = "markdown";
-  return CodeMirror.overlayMode(CodeMirror.getMode(config, markdownConfig), gfmOverlay);
-
+  CodeMirror.defineMIME("gfmBase", markdownConfig);
+  return CodeMirror.overlayMode(CodeMirror.getMode(config, "gfmBase"), gfmOverlay);
 }, "markdown");
 
-  CodeMirror.defineMIME("text/x-gfm", "gfm");
 });

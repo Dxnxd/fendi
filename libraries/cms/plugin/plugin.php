@@ -133,7 +133,7 @@ abstract class JPlugin extends JEvent
 	{
 		if (empty($extension))
 		{
-			$extension = 'Plg_' . $this->_type . '_' . $this->_name;
+			$extension = 'plg_' . $this->_type . '_' . $this->_name;
 		}
 
 		$lang = JFactory::getLanguage();

@@ -72,16 +72,12 @@ abstract class JGithubObject
 			// Use basic authentication
 			if ($this->options->get('api.username', false))
 			{
-				$username = $this->options->get('api.username');
-				$username = str_replace('@', '%40', $username);
-				$uri->setUser($username);
+				$uri->setUser($this->options->get('api.username'));
 			}
 
 			if ($this->options->get('api.password', false))
 			{
-				$password = $this->options->get('api.password');
-				$password = str_replace('@', '%40', $password);
-				$uri->setPass($password);
+				$uri->setPass($this->options->get('api.password'));
 			}
 		}
 

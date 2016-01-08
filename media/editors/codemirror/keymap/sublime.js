@@ -55,9 +55,7 @@
   cmds[map["Alt-Left"] = "goSubwordLeft"] = function(cm) { moveSubword(cm, -1); };
   cmds[map["Alt-Right"] = "goSubwordRight"] = function(cm) { moveSubword(cm, 1); };
 
-  var scrollLineCombo = mac ? "Ctrl-Alt-" : "Ctrl-";
-
-  cmds[map[scrollLineCombo + "Up"] = "scrollLineUp"] = function(cm) {
+  cmds[map[ctrl + "Up"] = "scrollLineUp"] = function(cm) {
     var info = cm.getScrollInfo();
     if (!cm.somethingSelected()) {
       var visibleBottomLine = cm.lineAtHeight(info.top + info.clientHeight, "local");
@@ -66,7 +64,7 @@
     }
     cm.scrollTo(null, info.top - cm.defaultTextHeight());
   };
-  cmds[map[scrollLineCombo + "Down"] = "scrollLineDown"] = function(cm) {
+  cmds[map[ctrl + "Down"] = "scrollLineDown"] = function(cm) {
     var info = cm.getScrollInfo();
     if (!cm.somethingSelected()) {
       var visibleTopLine = cm.lineAtHeight(info.top, "local")+1;

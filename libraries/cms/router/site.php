@@ -652,10 +652,10 @@ class JRouterSite extends JRouter
 	 *
 	 * @since   3.2
 	 */
-	protected function createUri($url)
+	protected function createURI($url)
 	{
 		// Create the URI
-		$uri = parent::createUri($url);
+		$uri = parent::createURI($url);
 
 		// Get the itemid form the URI
 		$itemid = $uri->getVar('Itemid');

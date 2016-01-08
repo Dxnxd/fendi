@@ -136,7 +136,7 @@ class AdminModelSysInfo extends JModelLegacy
 		$this->info = array();
 		$version = new JVersion;
 		$platform = new JPlatform;
-		$db = $this->getDbo();
+		$db = JFactory::getDbo();
 
 		$this->info['php'] = php_uname();
 		$this->info['dbversion'] = $db->getVersion();

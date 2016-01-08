@@ -11,8 +11,6 @@ defined('_JEXEC') or die;
 
 /**
  * Content article class.
- *
- * @since  1.6.0
  */
 class ContentControllerArticle extends JControllerForm
 {
@@ -74,7 +72,7 @@ class ContentControllerArticle extends JControllerForm
 		if ($categoryId)
 		{
 			// If the category has been passed in the data or URL check it.
-			$allow = $user->authorise('core.create', 'com_content.category.' . $categoryId);
+			$allow	= $user->authorise('core.create', 'com_content.category.' . $categoryId);
 		}
 
 		if ($allow === null)
@@ -238,8 +236,8 @@ class ContentControllerArticle extends JControllerForm
 			$append .= '&' . $urlVar . '=' . $recordId;
 		}
 
-		$itemId = $this->input->getInt('Itemid');
-		$return = $this->getReturnPage();
+		$itemId	= $this->input->getInt('Itemid');
+		$return	= $this->getReturnPage();
 		$catId  = $this->input->getInt('catid', null, 'get');
 
 		if ($itemId)

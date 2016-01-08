@@ -299,15 +299,21 @@ class UsersModelReset extends JModelForm
 			return false;
 		}
 
-		if (!$user->activation)
+		$parts = explode(':', $user->activation);
+		$crypt = $parts[0];
+
+		if (!isset($parts[1]))
 		{
 			$this->setError(JText::_('COM_USERS_USER_NOT_FOUND'));
 
 			return false;
 		}
 
+		$salt = $parts[1];
+		$testcrypt = JUserHelper::getCryptedPassword($data['token'], $salt, 'md5-hex');
+
 		// Verify the token
-		if (!(JUserHelper::verifyPassword($data['token'], $user->activation)))
+		if (!($crypt == $testcrypt))
 		{
 			$this->setError(JText::_('COM_USERS_USER_NOT_FOUND'));
 
@@ -324,7 +330,7 @@ class UsersModelReset extends JModelForm
 
 		// Push the user data into the session.
 		$app = JFactory::getApplication();
-		$app->setUserState('com_users.reset.token', $user->activation);
+		$app->setUserState('com_users.reset.token', $crypt . ':' . $salt);
 		$app->setUserState('com_users.reset.user', $user->id);
 
 		return true;
@@ -435,8 +441,8 @@ class UsersModelReset extends JModelForm
 
 		// Set the confirmation token.
 		$token = JApplicationHelper::getHash(JUserHelper::genRandomPassword());
-		$hashedToken = JUserHelper::hashPassword($token);
-
+		$salt = JUserHelper::getSalt('crypt-md5');
+		$hashedToken = md5($token . $salt) . ':' . $salt;
 		$user->activation = $hashedToken;
 
 		// Save the user to the database.

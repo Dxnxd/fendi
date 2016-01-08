@@ -21,10 +21,13 @@ foreach ($fieldsets as $group => $fieldset): // Iterate through the form fieldse
 	$fields = $this->form->getFieldset($group);
 	if (count($fields)):
 ?>
+<?php //if ($this->params->get('show_tags')) : ?>
+		<?php //$this->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
+		<?php //echo $this->tagLayout->render($this->tags); ?>
+	<?php // endif; ?>
 
 <fieldset id="users-profile-custom" class="users-profile-custom-<?php echo $group; ?>">
-	<?php // If the fieldset has a label set, display it as the legend. ?>
-	<?php if (isset($fieldset->label)): ?>
+	<?php if (isset($fieldset->label)): // If the fieldset has a label set, display it as the legend. ?>
 	<legend><?php echo JText::_($fieldset->label); ?></legend>
 	<?php endif; ?>
 	<dl class="dl-horizontal">

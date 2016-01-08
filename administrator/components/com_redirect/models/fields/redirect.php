@@ -102,7 +102,6 @@ class JFormFieldRedirect extends JFormFieldList
 	 * Method to get the field input markup.
 	 *
 	 * @return  string	The field input markup.
-	 *
 	 * @since   3.4
 	 */
 	protected function getOptions()

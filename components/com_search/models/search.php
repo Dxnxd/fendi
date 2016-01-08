@@ -153,7 +153,7 @@ class SearchModelSearch extends JModelLegacy
 				$rows = array_merge((array) $rows, (array) $result);
 			}
 
-			$this->_total = count($rows);
+			$this->_total	= count($rows);
 
 			if ($this->getState('limit') > 0)
 			{
@@ -171,8 +171,7 @@ class SearchModelSearch extends JModelLegacy
 	/**
 	 * Method to get the total number of weblink items for the category
 	 *
-	 * @access  public
-	 *
+	 * @access public
 	 * @return  integer
 	 */
 	public function getTotal()
@@ -188,7 +187,7 @@ class SearchModelSearch extends JModelLegacy
 	 *
 	 * @return  void
 	 *
-	 * @access  public
+	 * @access	public
 	 */
 	public function setAreas($active = array(), $search = array())
 	{
@@ -228,7 +227,7 @@ class SearchModelSearch extends JModelLegacy
 			$areas = array();
 
 			JPluginHelper::importPlugin('search');
-			$dispatcher  = JEventDispatcher::getInstance();
+			$dispatcher = JEventDispatcher::getInstance();
 			$searchareas = $dispatcher->trigger('onContentSearchAreas');
 
 			foreach ($searchareas as $area)

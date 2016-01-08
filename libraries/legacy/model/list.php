@@ -65,22 +65,6 @@ class JModelList extends JModelLegacy
 	protected $htmlFormName = 'adminForm';
 
 	/**
-	 * A blacklist of filter variables to not merge into the model's state
-	 *
-	 * @var    array
-	 * @since  3.4.5
-	 */
-	protected $filterBlacklist = array();
-
-	/**
-	 * A blacklist of list variables to not merge into the model's state
-	 *
-	 * @var    array
-	 * @since  3.4.5
-	 */
-	protected $listBlacklist = array('select');
-
-	/**
 	 * Constructor.
 	 *
 	 * @param   array  $config  An optional associative array of configuration settings.
@@ -481,19 +465,14 @@ class JModelList extends JModelLegacy
 		// If the context is set, assume that stateful lists are used.
 		if ($this->context)
 		{
-			$app         = JFactory::getApplication();
-			$inputFilter = JFilterInput::getInstance();
+			$app = JFactory::getApplication();
 
 			// Receive & set filters
 			if ($filters = $app->getUserStateFromRequest($this->context . '.filter', 'filter', array(), 'array'))
 			{
 				foreach ($filters as $name => $value)
 				{
-					// Exclude if blacklisted
-					if (!in_array($name, $this->filterBlacklist))
-					{
-						$this->setState('filter.' . $name, $value);
-					}
+					$this->setState('filter.' . $name, $value);
 				}
 			}
 
@@ -504,75 +483,64 @@ class JModelList extends JModelLegacy
 			{
 				foreach ($list as $name => $value)
 				{
-					// Exclude if blacklisted
-					if (!in_array($name, $this->listBlacklist))
+					// Extra validations
+					switch ($name)
 					{
-						// Extra validations
-						switch ($name)
-						{
-							case 'fullordering':
-								$orderingParts = explode(' ', $value);
+						case 'fullordering':
+							$orderingParts = explode(' ', $value);
 
-								if (count($orderingParts) >= 2)
+							if (count($orderingParts) >= 2)
+							{
+								// Latest part will be considered the direction
+								$fullDirection = end($orderingParts);
+
+								if (in_array(strtoupper($fullDirection), array('ASC', 'DESC', '')))
 								{
-									// Latest part will be considered the direction
-									$fullDirection = end($orderingParts);
-
-									if (in_array(strtoupper($fullDirection), array('ASC', 'DESC', '')))
-									{
-										$this->setState('list.direction', $fullDirection);
-									}
-
-									unset($orderingParts[count($orderingParts) - 1]);
-
-									// The rest will be the ordering
-									$fullOrdering = implode(' ', $orderingParts);
-
-									if (in_array($fullOrdering, $this->filter_fields))
-									{
-										$this->setState('list.ordering', $fullOrdering);
-									}
-								}
-								else
-								{
-									$this->setState('list.ordering', $ordering);
-									$this->setState('list.direction', $direction);
-								}
-								break;
-
-							case 'ordering':
-								if (!in_array($value, $this->filter_fields))
-								{
-									$value = $ordering;
-								}
-								break;
-
-							case 'direction':
-								if (!in_array(strtoupper($value), array('ASC', 'DESC', '')))
-								{
-									$value = $direction;
-								}
-								break;
-
-							case 'limit':
-							case 'start':
-								$limit = $inputFilter->clean($value, 'int');
-								break;
-
-							case 'select':
-								$explodedValue = explode(',', $value);
-
-								foreach ($explodedValue as &$field)
-								{
-									$field = $inputFilter->clean($field, 'cmd');
+									$this->setState('list.direction', $fullDirection);
 								}
 
-								$value = implode(',', $explodedValue);
-								break;
-						}
+								unset($orderingParts[count($orderingParts) - 1]);
 
-						$this->setState('list.' . $name, $value);
+								// The rest will be the ordering
+								$fullOrdering = implode(' ', $orderingParts);
+
+								if (in_array($fullOrdering, $this->filter_fields))
+								{
+									$this->setState('list.ordering', $fullOrdering);
+								}
+							}
+							else
+							{
+								$this->setState('list.ordering', $ordering);
+								$this->setState('list.direction', $direction);
+							}
+							break;
+
+						case 'ordering':
+							if (!in_array($value, $this->filter_fields))
+							{
+								$value = $ordering;
+							}
+							break;
+
+						case 'direction':
+							if (!in_array(strtoupper($value), array('ASC', 'DESC', '')))
+							{
+								$value = $direction;
+							}
+							break;
+
+						case 'limit':
+							$limit = $value;
+							break;
+
+						// Just to keep the default case
+						default:
+							$value = $value;
+							break;
 					}
+
+					$this->setState('list.' . $name, $value);
 				}
 			}
 			else

@@ -19,15 +19,15 @@ else
 	$myrtl     = $this->newsfeed->rtl;
 	$direction = " ";
 
-		if ($lang->isRtl() && $myrtl == 0)
+		if ($lang->isRTL() && $myrtl == 0)
 		{
 			$direction = " redirect-rtl";
 		}
-		elseif ($lang->isRtl() && $myrtl == 1)
+		elseif ($lang->isRTL() && $myrtl == 1)
 		{
 			$direction = " redirect-ltr";
 		}
-		elseif ($lang->isRtl() && $myrtl == 2)
+		elseif ($lang->isRTL() && $myrtl == 2)
 		{
 			$direction = " redirect-rtl";
 		}

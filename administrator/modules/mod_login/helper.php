@@ -39,7 +39,7 @@ abstract class ModLoginHelper
 		);
 
 		// Fix wrongly set parentheses in RTL languages
-		if (JFactory::getLanguage()->isRtl())
+		if (JFactory::getLanguage()->isRTL())
 		{
 			foreach ($languages as &$language)
 			{
@@ -57,7 +57,7 @@ abstract class ModLoginHelper
 	 *
 	 * @return  string
 	 */
-	public static function getReturnUri()
+	public static function getReturnURI()
 	{
 		$uri    = JUri::getInstance();
 		$return = 'index.php' . $uri->toString(array('query'));

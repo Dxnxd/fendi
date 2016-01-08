@@ -238,8 +238,7 @@ class JDocumentRendererHead extends JDocumentRenderer
 			$buffer .= $tab . '</script>' . $lnEnd;
 		}
 
-		// Output the custom tags - array_unique makes sure that we don't output the same tags twice
-		foreach (array_unique($document->_custom) as $custom)
+		foreach ($document->_custom as $custom)
 		{
 			$buffer .= $tab . $custom . $lnEnd;
 		}

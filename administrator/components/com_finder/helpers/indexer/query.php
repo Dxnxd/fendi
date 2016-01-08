@@ -271,7 +271,7 @@ class FinderIndexerQuery
 	 *
 	 * @since   2.5
 	 */
-	public function toUri($base = null)
+	public function toURI($base = null)
 	{
 		// Set the base if not specified.
 		if (empty($base))
@@ -693,7 +693,7 @@ class FinderIndexerQuery
 		if ($date->toUnix() !== null)
 		{
 			// Set the date filter.
-			$this->date1 = $date->toSql();
+			$this->date1 = $date->toSQL();
 			$this->when1 = in_array($when1, $whens) ? $when1 : 'before';
 		}
 
@@ -711,7 +711,7 @@ class FinderIndexerQuery
 		if ($date->toUnix() !== null)
 		{
 			// Set the date filter.
-			$this->date2 = $date->toSql();
+			$this->date2 = $date->toSQL();
 			$this->when2 = in_array($when2, $whens) ? $when2 : 'before';
 		}
 
@@ -819,7 +819,7 @@ class FinderIndexerQuery
 						if ($date->toUnix() !== null)
 						{
 							// Set the date filter.
-							$this->date1 = $date->toSql();
+							$this->date1 = $date->toSQL();
 							$this->when1 = in_array($modifier, $whens) ? $modifier : 'before';
 						}
 

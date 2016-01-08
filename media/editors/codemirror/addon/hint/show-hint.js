@@ -99,6 +99,7 @@
 
     update: function(first) {
       if (this.tick == null) return;
+      if (this.data) CodeMirror.signal(this.data, "update");
       if (!this.options.hint.async) {
         this.finishUpdate(this.options.hint(this.cm, this.options), first);
       } else {
@@ -110,8 +111,6 @@
     },
 
     finishUpdate: function(data, first) {
-      if (this.data) CodeMirror.signal(this.data, "update");
-      if (data && this.data && CodeMirror.cmpPos(data.from, this.data.from)) data = null;
       this.data = data;
 
       var picked = (this.widget && this.widget.picked) || (first && this.options.completeSingle);
@@ -352,20 +351,18 @@
 
   CodeMirror.registerHelper("hint", "fromList", function(cm, options) {
     var cur = cm.getCursor(), token = cm.getTokenAt(cur);
-    var to = CodeMirror.Pos(cur.line, token.end);
-    if (token.string && /\w/.test(token.string[token.string.length - 1])) {
-      var term = token.string, from = CodeMirror.Pos(cur.line, token.start);
-    } else {
-      var term = "", from = to;
-    }
     var found = [];
     for (var i = 0; i < options.words.length; i++) {
       var word = options.words[i];
-      if (word.slice(0, term.length) == term)
+      if (word.slice(0, token.string.length) == token.string)
         found.push(word);
     }
 
-    if (found.length) return {list: found, from: from, to: to};
+    if (found.length) return {
+      list: found,
+      from: CodeMirror.Pos(cur.line, token.start),
+            to: CodeMirror.Pos(cur.line, token.end)
+    };
   });
 
   CodeMirror.commands.autocomplete = CodeMirror.showHint;

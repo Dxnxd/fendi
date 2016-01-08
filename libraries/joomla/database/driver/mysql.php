@@ -101,7 +101,7 @@ class JDatabaseDriverMysql extends JDatabaseDriverMysqli
 		}
 
 		// Set charactersets (needed for MySQL 4.1.2+).
-		$this->setUtf();
+		$this->setUTF();
 
 		// Turn MySQL profiling ON in debug mode:
 		if ($this->debug && $this->hasProfiling())
@@ -378,7 +378,7 @@ class JDatabaseDriverMysql extends JDatabaseDriverMysqli
 	 *
 	 * @since   12.1
 	 */
-	public function setUtf()
+	public function setUTF()
 	{
 		$this->connect();
 

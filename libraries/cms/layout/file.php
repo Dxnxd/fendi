@@ -274,7 +274,12 @@ class JLayoutFile extends JLayoutBase
 				break;
 
 			case 'auto':
-				$component = JApplicationHelper::getComponentName();
+				if (defined('JPATH_COMPONENT'))
+				{
+					$parts = explode('/', JPATH_COMPONENT);
+					$component = end($parts);
+				}
+
 				break;
 
 			default:

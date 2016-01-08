@@ -1070,7 +1070,7 @@ class JLanguage
 	 *
 	 * @since   11.1
 	 */
-	public function isRtl()
+	public function isRTL()
 	{
 		return (bool) $this->metadata['rtl'];
 	}

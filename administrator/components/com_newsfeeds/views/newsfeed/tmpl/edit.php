@@ -28,10 +28,6 @@ JFactory::getDocument()->addScriptDeclaration("
 		}
 	};
 ");
-
-// Fieldsets to not automatically render by /layouts/joomla/edit/params.php
-$this->ignore_fieldsets = array('images', 'jbasic', 'jmetadata', 'item_associations');
-
 ?>
 <form action="<?php echo JRoute::_('index.php?option=com_newsfeeds&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="newsfeed-form" class="form-validate">
 
@@ -81,6 +77,7 @@ $this->ignore_fieldsets = array('images', 'jbasic', 'jmetadata', 'item_associati
 		<?php echo $this->loadTemplate('display'); ?>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
+		<?php $this->set('ignore_fieldsets', array('jbasic')); ?>
 		<?php echo JLayoutHelper::render('joomla.edit.params', $this); ?>
 
 

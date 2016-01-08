@@ -221,7 +221,7 @@ class JInstallerAdapterPlugin extends JInstallerAdapter
 	 */
 	protected function getScriptClassName()
 	{
-		return 'Plg' . str_replace('-', '', $this->group) . $this->element . 'InstallerScript';
+		return 'plg' . str_replace('-', '', $this->group) . $this->element . 'InstallerScript';
 	}
 
 	/**
@@ -522,7 +522,7 @@ class JInstallerAdapterPlugin extends JInstallerAdapter
 			$folderClass = str_replace('-', '', $row->folder);
 
 			// Set the class name
-			$classname = 'Plg' . $folderClass . $row->element . 'InstallerScript';
+			$classname = 'plg' . $folderClass . $row->element . 'InstallerScript';
 
 			if (class_exists($classname))
 			{

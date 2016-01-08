@@ -9,10 +9,9 @@
 
 defined('_JEXEC') or die;
 
-JHtml::_('bootstrap.tooltip');
-
 $class = ' class="first"';
-$lang  = JFactory::getLanguage();
+JHtml::_('bootstrap.tooltip');
+$lang	= JFactory::getLanguage();
 
 if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 ?>

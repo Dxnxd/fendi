@@ -259,7 +259,7 @@ class JRouter
 		}
 
 		// Create the URI object
-		$uri = $this->createUri($url);
+		$uri = $this->createURI($url);
 
 		// Do the preprocess stage of the URL build process
 		$this->processBuildRules($uri, self::PROCESS_BEFORE);
@@ -590,7 +590,7 @@ class JRouter
 
 		foreach ($this->_rules['parse' . $stage] as $rule)
 		{
-			$vars += (array) call_user_func_array($rule, array(&$this, &$uri));
+			$vars += call_user_func_array($rule, array(&$this, &$uri));
 		}
 
 		return $vars;
@@ -644,12 +644,12 @@ class JRouter
 	 * @return  JUri
 	 *
 	 * @since   1.5
-	 * @deprecated  4.0  Use createUri() instead
+	 * @deprecated  4.0  Use createURI() instead
 	 * @codeCoverageIgnore
 	 */
-	protected function _createUri($url)
+	protected function _createURI($url)
 	{
-		return $this->createUri($url);
+		return $this->createURI($url);
 	}
 
 	/**
@@ -661,7 +661,7 @@ class JRouter
 	 *
 	 * @since   3.2
 	 */
-	protected function createUri($url)
+	protected function createURI($url)
 	{
 		if (!is_array($url) && substr($url, 0, 1) != '&')
 		{

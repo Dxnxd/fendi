@@ -36,7 +36,6 @@ $script = "
 		}
 	}
 ";
-
 // Add the script to the document head
 JFactory::getDocument()->addScriptDeclaration($script);
 ?>

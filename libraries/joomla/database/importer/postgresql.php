@@ -51,9 +51,9 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 	 *
 	 * @since   12.1
 	 */
-	protected function getAddColumnSql($table, SimpleXMLElement $field)
+	protected function getAddColumnSQL($table, SimpleXMLElement $field)
 	{
-		return 'ALTER TABLE ' . $this->db->quoteName($table) . ' ADD COLUMN ' . $this->getColumnSql($field);
+		return 'ALTER TABLE ' . $this->db->quoteName($table) . ' ADD COLUMN ' . $this->getColumnSQL($field);
 	}
 
 	/**
@@ -65,7 +65,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 	 *
 	 * @since   12.1
 	 */
-	protected function getAddIndexSql(SimpleXMLElement $field)
+	protected function getAddIndexSQL(SimpleXMLElement $field)
 	{
 		return (string) $field['Query'];
 	}
@@ -79,7 +79,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 	 *
 	 * @since   12.1
 	 */
-	protected function getAlterTableSql(SimpleXMLElement $structure)
+	protected function getAlterTableSQL(SimpleXMLElement $structure)
 	{
 		$table = $this->getRealTableName($structure['name']);
 		$oldFields = $this->db->getTableColumns($table);
@@ -122,7 +122,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 
 				if ($change)
 				{
-					$alters[] = $this->getChangeSequenceSql($kSeqName, $vSeq);
+					$alters[] = $this->getChangeSequenceSQL($kSeqName, $vSeq);
 				}
 
 				// Unset this field so that what we have left are fields that need to be removed.
@@ -131,7 +131,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 			else
 			{
 				// The sequence is new
-				$alters[] = $this->getAddSequenceSql($newSequenceLook[$kSeqName][0]);
+				$alters[] = $this->getAddSequenceSQL($newSequenceLook[$kSeqName][0]);
 			}
 		}
 
@@ -139,7 +139,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 		foreach ($oldSeq as $name => $column)
 		{
 			// Delete the sequence.
-			$alters[] = $this->getDropSequenceSql($name);
+			$alters[] = $this->getDropSequenceSQL($name);
 		}
 
 		/* Field section */
@@ -159,7 +159,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 
 				if ($change)
 				{
-					$alters[] = $this->getChangeColumnSql($table, $field);
+					$alters[] = $this->getChangeColumnSQL($table, $field);
 				}
 
 				// Unset this field so that what we have left are fields that need to be removed.
@@ -168,7 +168,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 			else
 			{
 				// The field is new.
-				$alters[] = $this->getAddColumnSql($table, $field);
+				$alters[] = $this->getAddColumnSQL($table, $field);
 			}
 		}
 
@@ -176,7 +176,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 		foreach ($oldFields as $name => $column)
 		{
 			// Delete the column.
-			$alters[] = $this->getDropColumnSql($table, $name);
+			$alters[] = $this->getDropColumnSQL($table, $name);
 		}
 
 		/* Index section */
@@ -217,7 +217,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 
 				if (!$same)
 				{
-					$alters[] = $this->getDropIndexSql($name);
+					$alters[] = $this->getDropIndexSQL($name);
 					$alters[]  = (string) $newLookup[$name][0]['Query'];
 				}
 
@@ -236,11 +236,11 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 		{
 			if ($oldLookup[$name][0]->is_primary == 'TRUE')
 			{
-				$alters[] = $this->getDropPrimaryKeySql($table, $oldLookup[$name][0]->Index);
+				$alters[] = $this->getDropPrimaryKeySQL($table, $oldLookup[$name][0]->Index);
 			}
 			else
 			{
-				$alters[] = $this->getDropIndexSql($name);
+				$alters[] = $this->getDropIndexSQL($name);
 			}
 		}
 
@@ -256,7 +256,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 	 *
 	 * @since   12.1
 	 */
-	protected function getDropSequenceSql($name)
+	protected function getDropSequenceSQL($name)
 	{
 		return 'DROP SEQUENCE ' . $this->db->quoteName($name);
 	}
@@ -270,7 +270,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 	 *
 	 * @since   12.1
 	 */
-	protected function getAddSequenceSql($field)
+	protected function getAddSequenceSQL($field)
 	{
 		/* For older database version that doesn't support these fields use default values */
 		if (version_compare($this->db->getVersion(), '9.1.0') < 0)
@@ -298,7 +298,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 	 *
 	 * @since   12.1
 	 */
-	protected function getChangeSequenceSql($field)
+	protected function getChangeSequenceSQL($field)
 	{
 		/* For older database version that doesn't support these fields use default values */
 		if (version_compare($this->db->getVersion(), '9.1.0') < 0)
@@ -326,10 +326,10 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 	 *
 	 * @since   12.1
 	 */
-	protected function getChangeColumnSql($table, SimpleXMLElement $field)
+	protected function getChangeColumnSQL($table, SimpleXMLElement $field)
 	{
 		return 'ALTER TABLE ' . $this->db->quoteName($table) . ' ALTER COLUMN ' . $this->db->quoteName((string) $field['Field']) . ' '
-			. $this->getAlterColumnSql($table, $field);
+			. $this->getAlterColumnSQL($table, $field);
 	}
 
 	/**
@@ -342,7 +342,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 	 *
 	 * @since   12.1
 	 */
-	protected function getAlterColumnSql($table, $field)
+	protected function getAlterColumnSQL($table, $field)
 	{
 		// TODO Incorporate into parent class and use $this.
 		$blobs = array('text', 'smalltext', 'mediumtext', 'largetext');
@@ -396,7 +396,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 	 *
 	 * @since   12.1
 	 */
-	protected function getColumnSql(SimpleXMLElement $field)
+	protected function getColumnSQL(SimpleXMLElement $field)
 	{
 		// TODO Incorporate into parent class and use $this.
 		$blobs = array('text', 'smalltext', 'mediumtext', 'largetext');
@@ -449,7 +449,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 	 *
 	 * @since   12.1
 	 */
-	protected function getDropIndexSql($name)
+	protected function getDropIndexSQL($name)
 	{
 		return 'DROP INDEX ' . $this->db->quoteName($name);
 	}
@@ -464,7 +464,7 @@ class JDatabaseImporterPostgresql extends JDatabaseImporter
 	 *
 	 * @since   12.1
 	 */
-	protected function getDropPrimaryKeySql($table, $name)
+	protected function getDropPrimaryKeySQL($table, $name)
 	{
 		return 'ALTER TABLE ONLY ' . $this->db->quoteName($table) . ' DROP CONSTRAINT ' . $this->db->quoteName($name);
 	}

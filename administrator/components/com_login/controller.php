@@ -62,15 +62,7 @@ class LoginController extends JControllerLegacy
 			// Only redirect to an internal URL.
 			if (JUri::isInternal($return))
 			{
-				// If &tmpl=component - redirect to index.php
-				if (strpos($return, "tmpl=component") === false)
-				{
-					$app->redirect($return);
-				}
-				else
-				{
-					$app->redirect('index.php');
-				}
+				$app->redirect($return);
 			}
 		}
 
