@@ -12,9 +12,11 @@ $lang = JFactory::getLanguage()->getTag();
 ?>
 <div class="panel synopsis tiles">
 	<div class="panel-body">
+            <?php if ($module->showtitle != 0) { ?>
 		<div class="desc">
 			<h3 class="title"><?php echo ($lang == 'en-GB') ? 'Latest Products' : 'جدیدترین محصولات'; ?></h3>
 		</div>
+            <?php } ?> 
 		<ul class="list-unstyled">
 			<?php foreach ($items as $key => $item) { ?>
 			<li class="tile" data-title="<?php echo $item->title; ?>" data-link="<?php echo $item->link; ?>">
