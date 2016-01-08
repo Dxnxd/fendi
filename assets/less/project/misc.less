@@ -1,6 +1,9 @@
 body { font-family: @fontFamily; text-align: right; }
 .ltr { direction: ltr; text-align: left; }
 text-area, input, button, .form-control { direction: rtl; text-align: right; }
+#contact-form {
+    input, textarea { color: @text-color; }
+}
 .btn {
     &.btn-success {
 	background-color: @green; transition: all 0.2s;
