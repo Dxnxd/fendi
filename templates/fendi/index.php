@@ -117,6 +117,7 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 						<?php } ?>
 						<?php if (!$helper->countModules('frontpage')) { ?>
 							<div id="component" class="col-xs-12">
+                                                                <jdoc:include type="message" />
 								<jdoc:include type="component" />
 							</div>
 						<?php } ?>
@@ -127,12 +128,12 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 				<div id="bot" class="page wrapper _gray">
 					<div class="container">
 						<div class="row">
-							<div class="col-xs-12 col-md-4">
+							<div class="col-xs-12 col-md-8">
 								<jdoc:include type="modules" name="bot-1" />
 							</div>
-							<div class="col-xs-12 col-md-4">
+<!--							<div class="col-xs-12 col-md-4">
 								<jdoc:include type="modules" name="bot-2" />
-							</div>
+							</div>-->
 							<div class="col-xs-12 col-md-4">
 								<jdoc:include type="modules" name="bot-3" />
 							</div>
@@ -178,7 +179,6 @@ echo $helper->doctype . "\n"; // Doctype based on users platform (only differs i
 				</div>
 			</div>
 		</footer>
-		<jdoc:include type="message" />
 		<div class="modal fade zoom-out" id="item-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content" role="tabpanel">
